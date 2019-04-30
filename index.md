@@ -6,6 +6,13 @@ We analysed the amount of people in the states of Pennsylvania, Texas, and Washi
 ### Markdown
 
 
+---
+title: "Final Project Report"
+author: "Andrew Casey & Ciara Virgo"
+date: "Due April 30, 2019"
+output: html_notebook
+---
+
 ```{r echo=TRUE, message=FALSE}
 # always clean up R environment
 rm(list = ls())
@@ -26,7 +33,8 @@ Heart_Raw <- fread("NCHS_-_Potentially_Excess_Deaths_from_the_Five_Leading_Cause
 Tobacco_Raw <- fread("Behavioral_Risk_Factor_Data__Tobacco_Use__2010_And_Prior_.csv")
 ```
 
-#Data Wrangling
+
+# Data Wrangling
 
 ```{r}
 #Filter the Smoking Data to narrow it down to 3 States and years common between the two data sets
@@ -158,9 +166,9 @@ grep("[YEARS]", Heart_age, value = TRUE)
 ```
 
 
-#Data Visualization
+# Data Visualization
 
-##Data Wrangling for plots A and B.
+## Data Wrangling for plots A and B.
 ```{r}
 #Select desired variables from Tobacco.
 Tobacco_Measure <- Tobacco %>%
@@ -192,7 +200,8 @@ TobaccoHeartTable <- TobaccoHeart %>%
   mutate(FrequencyByState = n / sum(n))
 ```
 
-###(A) Plot A uses both data sets.
+
+### (A) Plot A uses both data sets.
 ```{r}
 #Plot shows the count of people who currenlty smoke and have died from heart disease by age groups across Pennsylvania, Texas, and Washington.
 ggplot(TobaccoHeartTable, aes(x = MeasureDesc, y = n, fill = MeasureDesc)) + 
@@ -227,15 +236,5 @@ Syntax highlighted code block
 
 **Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
+[Link](url) and ![Image](http://127.0.0.1:30059/chunk_output/s/75A01876/ck2h38d5ot59r/000005.png?resize=77)
 ```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/cvirgo/TobaccoVs.HeartDisease/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
