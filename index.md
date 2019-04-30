@@ -1,8 +1,7 @@
-## Welcome to GitHub Pages
+# STAT 380 Final Report
+### By: Andrew Casey and Ciara Virgo
 
-You can use the [editor on GitHub](https://github.com/cvirgo/TobaccoVs.HeartDisease/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+We analysed the amount of people in the states of Pennsylvania, Texas, and Washington who use Tobacco or have died from Heart Disease. 
 
 ### Markdown
 
