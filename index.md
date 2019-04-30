@@ -205,8 +205,8 @@ ggplot(TobaccoHeartTable, aes(x = MeasureDesc, y = n, fill = MeasureDesc)) +
   ylab("Count of people")
 ```
 
-![Image](Screen Shot 2019-04-30 at 7.18.29 PM)
 
+![Image](Screen Shot 2019-04-30 at 7.18.29 PM.png)
 
 
 
