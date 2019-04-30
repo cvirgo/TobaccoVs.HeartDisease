@@ -6,10 +6,10 @@ We analysed the amount of people in the states of Pennsylvania, Texas, and Washi
 ### Markdown
 
 ```{r echo=TRUE, message=FALSE}
-# always clean up R environment
+#always clean up R environment
 rm(list = ls())
 
-# loading packages
+#loading packages
 library(plyr)
 library(mdsr)
 library(tidyr)
@@ -20,7 +20,7 @@ library(tibble)
 library(klaR)
 library(Rmixmod)
 
-# loading in data
+#loading in data
 Heart_Raw <- fread("NCHS_-_Potentially_Excess_Deaths_from_the_Five_Leading_Causes_of_Death.csv")
 Tobacco_Raw <- fread("Behavioral_Risk_Factor_Data__Tobacco_Use__2010_And_Prior_.csv")
 ```
@@ -204,30 +204,46 @@ ggplot(TobaccoHeartTable, aes(x = MeasureDesc, y = n, fill = MeasureDesc)) +
   xlab("Condition") +
   ylab("Count of people")
 ```
-
-
 ![Image](Screen Shot 2019-04-30 at 7.18.29 PM.png)
 
 
-
-
-
-
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](scr)
+### (B) Plot B uses 3 or more variables.
+```{r}
+#Plot the percentage of current smokers and heart disease of each state by year. 
+ggplot() + 
+  geom_bar(data=TobaccoHeartTable, 
+           aes(y = FrequencyByState, x = Year, fill = MeasureDesc), 
+           stat="identity",
+           position='stack') +
+  theme_bw() +
+  facet_grid(AgeRange ~ State) +
+  labs(fill = "Condition") +
+  ggtitle("Percentage of current smokers and heart disease deaths by state from 2005 - 2010")
 ```
+![Image](Screen Shot 2019-04-30 at 7.35.43 PM.png)
+
+
+### (C) Third visualization
+```{r}
+#Plot the count of current smokers by state across all years and all age groups 
+ggplot(Tobacco_Measure, aes(x = Year)) +
+  geom_histogram(stat = "count") +
+  geom_bar(aes(fill = State)) +
+  ggtitle("Number of current smokers by state between 2005 - 2010") +
+  ylab("Number of smokers")
+```
+![Image](Screen Shot 2019-04-30 at 7.35.53 PM.png)
+
+
+### (D) Fourth visualization
+```{r}
+#Plot the count of heart disease deaths by state across all years and all age groups. 
+ ggplot(Heart_Measure, aes(x = Year)) +
+  geom_histogram(stat = "count") +
+  geom_bar(aes(fill = State)) +
+  ggtitle("Number of people who have died of heart disease by state between 2005 - 2010") +
+  labs(fill = "Condition") +
+  xlab("Condition") +
+  ylab("Count of people")
+```
+![Image](Screen Shot 2019-04-30 at 7.36.02 PM.png)
