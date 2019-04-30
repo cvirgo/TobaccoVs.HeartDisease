@@ -5,14 +5,6 @@ We analysed the amount of people in the states of Pennsylvania, Texas, and Washi
 
 ### Markdown
 
-
----
-title: "Final Project Report"
-author: "Andrew Casey & Ciara Virgo"
-date: "Due April 30, 2019"
-output: html_notebook
----
-
 ```{r echo=TRUE, message=FALSE}
 # always clean up R environment
 rm(list = ls())
@@ -213,6 +205,7 @@ ggplot(TobaccoHeartTable, aes(x = MeasureDesc, y = n, fill = MeasureDesc)) +
   ylab("Count of people")
 ```
 
+![Image](Screen Shot 2019-04-30 at 7.18.29 PM)
 
 
 
@@ -236,5 +229,5 @@ Syntax highlighted code block
 
 **Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](http://127.0.0.1:30059/chunk_output/s/75A01876/ck2h38d5ot59r/000005.png?resize=77)
+[Link](url) and ![Image](scr)
 ```
