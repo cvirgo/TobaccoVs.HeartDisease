@@ -160,7 +160,7 @@ grep("[YEARS]", Heart_age, value = TRUE)
 
 # Data Visualization
 
-## Data Wrangling for plots A and B.
+### Data Wrangling for plots A and B.
 ```{r}
 #Select desired variables from Tobacco.
 Tobacco_Measure <- Tobacco %>%
