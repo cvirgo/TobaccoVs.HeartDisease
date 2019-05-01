@@ -5,7 +5,7 @@ We analysed the amount of people in the states of Pennsylvania, Texas, and Washi
 
 ### Markdown
 
-```{r echo=TRUE, message=FALSE}
+```{r}
 #always clean up R environment
 rm(list = ls())
 
