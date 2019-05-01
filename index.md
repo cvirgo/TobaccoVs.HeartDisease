@@ -247,3 +247,84 @@ ggplot(Tobacco_Measure, aes(x = Year)) +
   ylab("Count of people")
 ```
 ![Image](Screen Shot 2019-04-30 at 7.36.02 PM.png)
+
+
+# Data Analysis
+
+### Supervised Learning and Simulation
+```{r}
+#Changes the categorical variables to quantitative so we can do a linear regression model.
+HeartModelData <- HeartData
+for(i in 1:length(HeartModelData$`Age Range`)){
+  if(HeartModelData$`Age Range`[i] == "44 Years and Below"){
+    HeartModelData$`Age Range`[i] <- 0
+  }
+  else if(HeartModelData$`Age Range`[i] == "45 to 64 Years"){
+    HeartModelData$`Age Range`[i] <- 1
+  }
+  else if(HeartModelData$`Age Range`[i] == "65 Years and Older"){
+    HeartModelData$`Age Range`[i] <- 2
+  }
+}
+
+for(i in 1:length(HeartModelData$`Age Range`)){
+  if(HeartModelData$Locality[i] == "Nonmetropolitan"){
+    HeartModelData$Locality[i] <- 0
+  }
+  else if(HeartModelData$Locality[i] == "Metropolitan"){
+    HeartModelData$Locality[i] <- 1
+  }
+}
+
+for(i in 1:length(HeartModelData$State)){
+  if(HeartModelData$State[i] == "Pennsylvania"){
+    HeartModelData$State[i] <- 0
+  }
+  else if(HeartModelData$State[i] == "Texas"){
+    HeartModelData$State[i] <- 1
+  }
+  else if(HeartModelData$State[i] == "Washington"){
+    HeartModelData$State[i] <- 2
+  }
+}
+```
+
+```{r}
+#Multiple Linear Regression model coefficients
+linearMod <- lm(`Observed Deaths` ~ Locality + `Age Range`, data = HeartModelData)
+summary(linearMod)
+```
+![Image](Screen Shot 2019-04-30 at 9.50.21 PM.png)
+
+```{r}
+#Final Simulation of the multiple linear regression model made above.
+n <- 1000
+x1 <- runif(n, min = 0, max = 1)
+x2 <- runif(n, min = 0, max = 2)
+x3 <- runif(n, min = 0, max = 2)
+sim <- function(beta0 = -1831.4, beta1 = 5038.4, beta2 = 1241.5, beta3 = 5168.5){
+  y <- beta0 + beta1*x1 + beta2*x2 + beta3*x3 + rnorm(n, mean = mean(HeartModelData$`Observed Deaths`),
+                                                      sd = sd(HeartModelData$`Observed Deaths`))
+  mod <- lm(y ~ x1 + x2 + x3)
+  result <- coefficients(mod)
+  return(result)
+}
+sims <- mosaic::do(1000) * sim()
+sims
+```
+
+### Unsupervised Learning
+```{r}
+#Selecting data to use in clusters
+HeartModelData <-
+  HeartModelData %>%
+  select(`Age Range`, Locality, State)
+#Using kmodes technique to cluster data
+KResults <- kmodes(HeartModelData, 10, iter.max = 10, weighted = FALSE)
+KResults
+#Plotting kmodes clusters to get a clear visualization on the data
+plot(HeartModelData[],col= KResults$cluster)
+```
+![Image](Screen Shot 2019-04-30 at 9.50.41 PM.png)
+![Image](Screen Shot 2019-04-30 at 9.50.48 PM.png)
+![Image](Screen Shot 2019-04-30 at 9.50.56 PM.png)
