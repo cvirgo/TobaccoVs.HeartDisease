@@ -132,6 +132,7 @@ Tobacco <- TobaccoCasestoRows()
 ```
 
 ```{r}
+#Function that makes the data longer by duplicating the number of rows by the value in the sample size column and making the data set have more rows.
 HeartCasestoRows <- function(){
   Year <- vector()
   State <- vector()
@@ -150,6 +151,7 @@ Heart <- HeartCasestoRows()
 ```
 
 ```{r}
+#Picking out observations that include the letters YEARS.
 Heart_age <- 
   HeartData %>%
   select(`Age Range`)
