@@ -1,7 +1,7 @@
 # STAT 380 Final Report
 ### By: Andrew Casey and Ciara Virgo
 
-We analysed the amount of people in the states of Pennsylvania, Texas, and Washington who use Tobacco or have died from Heart Disease. 
+We analysed the amount of people in the states of Pennsylvania, Texas, and Washington who use Tobacco or have died from Heart Disease between 2005 and 2010. 
 
 ### Markdown
 
